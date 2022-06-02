@@ -15,7 +15,7 @@ Sasha looks for the following **env vars** upon start:
 If no credentials are found in the env, Sasha will look for your `~/.aws/config` and `~/.aws/credentials` files. If not found, Sasha will refuse to work.
 
 **Flag options:**
-- `e` - S3 entrypoint URL. Example value: `https://prop.s3.loc.dom.com`. If not specified, the entrypoint will be sought in the env. If it is not provided in either way, Sasha will refuse to work.
+- `-e` - S3 entrypoint URL. Example value: `https://prop.s3.loc.dom.com`. If not specified, the entrypoint will be sought in the env. If it is not provided in either way, Sasha will refuse to work.
 
 You can find some pre-compiled binaries in this repository.
 
