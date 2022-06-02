@@ -10,9 +10,26 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3"
 )
 
-func GetSession(endpoint string) *session.Session {
+func GetSession(endpoint string, profile string) *session.Session {
+	defaultRegion := "default"
+	if profile != "" {
+		sess, err := session.NewSessionWithOptions(session.Options{
+			Profile: profile,
+			Config: aws.Config{
+				Endpoint: aws.String(endpoint),
+			},
+		})
+		if err != nil {
+			fmt.Printf("Error when initializing the session: %s\n", err)
+			os.Exit(1)
+		}
+		if *sess.Config.Region == "" {
+			sess.Config.Region = aws.String(defaultRegion)
+		}
+		return sess
+	}
 	sess := session.Must(session.NewSession(&aws.Config{
-		Region:   aws.String("default"),
+		Region:   aws.String(defaultRegion),
 		Endpoint: aws.String(endpoint),
 	}))
 	return sess

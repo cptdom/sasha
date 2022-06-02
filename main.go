@@ -18,6 +18,11 @@ func main() {
 		`S3 entrypoint URL. Required. Can be stored in env as 'S3_ENTRYPOINT'.
 		Example value: https://prop.s3.loc.dom.com`,
 	)
+	Profile := flag.String(
+		"p",
+		"",
+		`S3 profile from the AWS credentials file to use. Overrides the ENV credentials.`,
+	)
 	flag.Parse()
 	if *endpointUrl == "" {
 		if val, ok := os.LookupEnv("S3_ENTRYPOINT"); !ok {
@@ -30,7 +35,7 @@ func main() {
 	// initiate session
 	fmt.Printf("Sasha v%v\n", version.Version)
 	s := s3s.SessionClient{
-		Session: *s3s.GetSession(*endpointUrl),
+		Session: *s3s.GetSession(*endpointUrl, *Profile),
 	}
 	// run the loop
 	handler.RunLoop(s)

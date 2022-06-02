@@ -141,7 +141,7 @@ func (Location *Location) Update() {
 		buff := make(map[string]*s3.Bucket)
 		res, err := s3s.GetAllBuckets(&Location.S3)
 		if err != nil {
-			fmt.Printf("Failed to fetch buckets: %v\n", err)
+			fmt.Println(err)
 			os.Exit(1)
 		}
 		for _, b := range res {
