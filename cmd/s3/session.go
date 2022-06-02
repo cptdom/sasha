@@ -28,7 +28,6 @@ func (s *SessionClient) GetAccessID() string {
 	if err != nil {
 		fmt.Println("No AccessID found.")
 		os.Exit(1)
-		return ""
 	}
 	return sessionData.AccessKeyID
 }

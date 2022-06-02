@@ -12,11 +12,19 @@ import (
 
 func main() {
 	// get endpoint
-	endpointUrl := flag.String("e", "", "S3 endpoint URL. Required. Example value: https://prop.s3.loc.dom.com")
+	endpointUrl := flag.String("e",
+		"",
+		`S3 entrypoint URL. Required. Can be stored in env as 'S3_ENTRYPOINT'.
+		Example value: https://prop.s3.loc.dom.com`,
+	)
 	flag.Parse()
 	if *endpointUrl == "" {
-		fmt.Println("Missing endpoint URL. Check 'sasha --help'.")
-		os.Exit(1)
+		if val, ok := os.LookupEnv("S3_ENTRYPOINT"); !ok {
+			fmt.Println("Missing entrypoint URL. Check 'sasha --help'.")
+			os.Exit(1)
+		} else {
+			endpointUrl = &val
+		}
 	}
 	// initiate session
 	fmt.Printf("Sasha v%v\n", version.Version)

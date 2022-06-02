@@ -10,9 +10,10 @@ Sasha is supposed to simulate shell-like environment while browsing through an S
 Sasha looks for the following env vars upon start:
 - `AWS_ACCESS_KEY`
 - `AWS_SECRET_ACCESS_KEY`
+- `S3_ENTRYPOINT` - S3 entrypoint URL
 
-Sasha also needs the following flag to be set:
-- `e` - S3 endpoint URL. Example value: `https://prop.s3.loc.dom.com`
+Flag options:
+- `e` - S3 entrypoint URL. Example value: `https://prop.s3.loc.dom.com`. If not specified, the entrypoint will be sought in the env.
 
 You can find some pre-compiled binaries in this repository.
 
