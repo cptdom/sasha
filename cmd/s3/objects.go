@@ -114,10 +114,10 @@ func ListFiles(svc *s3.S3, b *string, prefix *string) {
 	}
 	for _, page := range result {
 		for _, f := range page.Contents {
-			keyWithoutPrefix := strings.TrimLeft(*f.Key, *prefix)
-			splitF := strings.Split(keyWithoutPrefix, "/")
-			if len(splitF) == 1 {
-				fmt.Printf("%-50s %s\n", splitF[0], f.LastModified.Format(utils.DateFormat))
+			splitF := strings.Split(*f.Key, "/")
+			prefixLength := len(strings.Split(*prefix, "/"))
+			if len(splitF) == prefixLength {
+				fmt.Printf("%-50s %s\n", splitF[prefixLength-1], f.LastModified.Format(utils.DateFormat))
 			}
 		}
 		keycount += *page.KeyCount
