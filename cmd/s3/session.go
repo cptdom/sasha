@@ -15,7 +15,6 @@ func GetSession(endpoint string) *session.Session {
 		Region:   aws.String("default"),
 		Endpoint: aws.String(endpoint),
 	}))
-
 	return sess
 }
 

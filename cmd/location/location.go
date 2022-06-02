@@ -115,10 +115,10 @@ func (Location *Location) Reset() {
 	Location.Bucket = ""
 }
 
+// updates the current level in case of expected changes
 func (Location *Location) Update() {
-	// update bucket
 	if Location.Bucket != "" {
-		// buckets
+		// dirs
 		prefix := strings.Join(Location.Level, "/")
 		if prefix != "/" {
 			prefix = prefix + "/"
