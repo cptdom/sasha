@@ -12,7 +12,7 @@ Sasha looks for the following env vars upon start:
 - `AWS_SECRET_ACCESS_KEY`
 
 Sasha also needs the following flag to be set:
-- `e` - S3 endpoint URL. Example value: https://prop.s3.loc.dom.com
+- `e` - S3 endpoint URL. Example value: `https://prop.s3.loc.dom.com`
 
 You can find some pre-compiled binaries in this repository.
 
