@@ -11,8 +11,9 @@ import (
 )
 
 func main() {
-	// get endpoint
-	endpointUrl := flag.String("e",
+	// flags
+	endpointUrl := flag.String(
+		"e",
 		"",
 		`S3 entrypoint URL. Required. Can be stored in env as 'S3_ENTRYPOINT'.
 		Example value: https://prop.s3.loc.dom.com`,

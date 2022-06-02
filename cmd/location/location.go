@@ -2,6 +2,7 @@ package location
 
 import (
 	"fmt"
+	"os"
 	"sort"
 	"strings"
 
@@ -136,12 +137,12 @@ func (Location *Location) Update() {
 		Location.DirBuffer = dirBuff
 
 	} else {
-		// buckets update
+		// buckets update, serves as the initial health check
 		buff := make(map[string]*s3.Bucket)
 		res, err := s3s.GetAllBuckets(&Location.S3)
 		if err != nil {
 			fmt.Printf("Failed to fetch buckets: %v\n", err)
-			return
+			os.Exit(1)
 		}
 		for _, b := range res {
 			buff[*b.Name] = b
