@@ -10,7 +10,7 @@ Sasha is supposed to simulate shell-like environment while browsing through an S
 Sasha looks for the following **env vars** upon start:
 - `AWS_ACCESS_KEY`
 - `AWS_SECRET_ACCESS_KEY`
-- `S3_ENTRYPOINT` - S3 entrypoint URL, can be overridden with an `-e` flag.  
+- `S3_ENTRYPOINT` - S3 entrypoint URL, can be overridden with the `-e` flag.  
 
 If no credentials are found in the env, Sasha will look for your `~/.aws/config` and `~/.aws/credentials` files. If not found, Sasha will refuse to work.
 
